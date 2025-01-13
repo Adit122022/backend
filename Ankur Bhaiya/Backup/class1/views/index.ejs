@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 text-gray-800">
+    <!-- Navbar -->
+    <nav class="bg-white shadow-md sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <!-- Brand Name -->
+            <a href="#" class="text-2xl font-bold text-blue-600">BrandName</a>
+            <!-- Navigation Links -->
+            <ul class="flex space-x-6">
+                <li><a href="/" class="text-gray-700 hover:text-blue-600">Home</a></li>
+                <li><a href="/about" class="text-gray-700 hover:text-blue-600">About</a></li>
+                <li><a href="/services" class="text-gray-700 hover:text-blue-600">Services</a></li>
+                <li><a href="/contact" class="text-gray-700 hover:text-blue-600">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-10">
+        <!-- Welcome Section -->
+        <section class="text-center mb-10">
+            <h1 class="text-4xl font-bold text-gray-800 mb-4">Welcome to Our Website!</h1>
+            <p class="text-lg text-gray-600">
+                Explore our team and learn more about us. We’re here to inspire and connect with you!
+            </p>
+        </section>
+
+        <!-- Cards Section -->
+        <section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            <% date.forEach(value => { %>
+                <div class="flex flex-col bg-white shadow-lg rounded-lg p-6 transform transition duration-300 hover:scale-105">
+                    <!-- Card Image -->
+                    <img src="<%= value.image %>" alt="<%= value.name %>" 
+                        class="w-32 h-32 rounded-full mx-auto mb-6 object-cover shadow-md">
+                    
+                    <!-- Card Content -->
+                    <h2 class="text-xl font-semibold text-center text-gray-700 mb-2">
+                        <%= value.name %>
+                    </h2>
+                    <p class="text-gray-500 text-center text-lg mb-2">
+                        <%= value.age %> years old
+                    </p>
+                    <p class="text-gray-500 text-center text-lg">
+                        <%= value.city %>
+                    </p>
+                </div>
+            <% }) %>
+        </section>
+    </main>
+</body>
+</html>
