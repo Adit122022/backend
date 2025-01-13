@@ -1,0 +1,4 @@
+express sever
+view engine
+public
+req.query and req.body + req.headers 
