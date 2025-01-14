@@ -1,11 +1,10 @@
+// Express ko import kiya 
 const express = require('express')
+const indexRoute = require('./routes/index.routes')
 const app = express();
-const {indexController , aboutController} = require('./controllers/index.controller')
-const {getProfileController} = require('./controllers/user.controller')
-const {getProductController} = require('./controllers/product.controller')
-
-app.get('/',indexController); 
-app.get('/about',aboutController); 
-app.get('/user/profile', getProfileController); 
-app.get('/product', getProductController); 
+ 
+app.use('/',indexRoute); 
+app.use('/about',indexRoute); 
+app.use('/user/profile', indexRoute); 
+app.use('/product', indexRoute);
 module.exports = app;

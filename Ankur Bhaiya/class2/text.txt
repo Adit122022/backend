@@ -8,6 +8,6 @@ dividing code into  layers
 npm init -y
 npm i express ejs
 server.js - entry point 
-app.js -    express config (middlewares ,
+src/app.js -    express config (middlewares ,
             routes ['/',/user etc]) ,
-            controllers
+            src/controllers/filescontrollers
