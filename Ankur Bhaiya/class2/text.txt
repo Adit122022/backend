@@ -2,4 +2,12 @@ dividing code into  layers
     server.js - help to start server and creating database connections
     app.js - to create middlewares and server
     index.controller.js - to create  controllers on differnet routes
-    
+
+
+
+npm init -y
+npm i express ejs
+server.js - entry point 
+app.js -    express config (middlewares ,
+            routes ['/',/user etc]) ,
+            controllers
