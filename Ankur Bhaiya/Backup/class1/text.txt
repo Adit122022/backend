@@ -10,5 +10,11 @@ view engine
     app.set('view engine','ejs')
     res.render
     wildcard routes ('*')
+
+Data passing in 
+    string/number /single object
+    array of objects
+
 public
+
 req.query and req.body + req.headers 
