@@ -11,3 +11,4 @@ router.get('/user/profile', getProfileController);
 router.get('/product', getProductController);
 
 module.exports = router;
+// please sepearte the routes and add them into different routes formate
