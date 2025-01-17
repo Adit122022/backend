@@ -4,5 +4,5 @@ const mongoose = require('mongoose');
     email: { type: String, required: true, unique: true },
     password: { type: String, required: true },
   });
-const userModel = mongoose.model('USER', userSchema);   // using this we can perform CRUD elements 
+const userModel = mongoose.model('users', userSchema);   // using this we can perform CRUD elements 
 module.exports = userModel;
