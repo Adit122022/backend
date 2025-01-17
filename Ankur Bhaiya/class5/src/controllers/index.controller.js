@@ -15,9 +15,16 @@ const { username , email , password } = req.query;
 }
 
 module.exports.userController = async(req,res)=>{
-    const users = await userModel.find({
-        username: "a",
-    });
+    const users = await userModel.find();
+    res.send(users);
+}
+module.exports.updateUserController = async(req,res)=>{
+    const users = await userModel.findOneAndUpdate({email:"a@a.com"},{username: req.query.username} );
+    res.send(users);
+}
+
+module.exports.deleteUserController = async(req,res)=>{
+    const users = await userModel.findOneAndDelete({email:req.query.email});
     res.send(users);
 }
 
