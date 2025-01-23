@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>User Directory</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    .scrollbar::-webkit-scrollbar{
+      display: none;
+    }
+  </style>
+</head>
+<body class="bg-gray-300 py-5 px-8 h-screen">
+  <!-- Page Title -->
+  <h1 class="text-4xl font-extrabold text-gray-800 text-center mb-10">User Directory</h1>
+
+  <!-- Cards Container -->
+  <div class="container mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8 px-4 overflow-x-hidden overflow-y-scroll scrollbar">
+    <% users.forEach(user => { %>
+      <a href="/user/<%= user._id %>"
+        class="block text-center  text-white py-3  ">
+      <div class="bg-white shadow-lg rounded-lg overflow-hidden ">
+      <!-- Hero Section -->
+      <div class="relative h-64 ">
+        <img class="absolute inset-0 w-full h-full object-cover object-top" src="<%= user.profileImage %>" alt="Profile Image">
+        <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent flex flex-col justify-end p-4">
+          <h2 class="text-2xl font-bold text-white tracking-wide mb-2 animate-bounce transition-all duration-1000 ease-out">
+           
+              <%= user.username %>
+         
+          </h2>
+        </div>
+      </div>
+      </div>
+    </a>
+    <% }) %>
+  </div>
+</body>
+</html>

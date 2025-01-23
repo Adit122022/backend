@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50 text-gray-800">
+  <% if (users) { %> 
+    <% users.forEach(user => { %>
+      <!-- Hero Section -->
+      <section class="relative w-full h-screen bg-cover bg-center" style="background-image: url('<%= user.profileImage %>');">
+        <div class="absolute inset-0 bg-black bg-opacity-60 flex flex-col justify-center items-center">
+          
+          <h1 class="text-5xl font-extrabold text-white mb-4 tracking-wide"><%= user.username %></h1>
+          <p class="text-lg text-gray-300 italic">Creative Professional & Innovator</p>
+    
+          <div class="flex w-full">
+            <!-- About Section -->
+            <section class="py-16 px-6 lg:px-20 w-1/2">
+              <div class="max-w-5xl mx-auto p-5">
+                <h2 class="text-4xl font-bold mb-6 text-gray-300 border-b-4 border-blue-600 inline-block pb-2">About Me</h2>
+                <p class="text-gray-200 text-lg leading-relaxed p-6 rounded-lg shadow-sm">
+                  <%= user.bio %>
+                </p>
+              </div>
+            </section>
+          
+            <!-- Contact Section -->
+            <section class="py-16 px-6 lg:px-20 w-1/2">
+              <div class="max-w-5xl mx-auto p-5">
+                <h2 class="text-4xl font-bold mb-6 text-gray-200 border-b-4 border-blue-600 inline-block pb-2">Contact Information</h2>
+                <div class="p-8 rounded-lg shadow-md">
+                  <!-- Email -->
+                  <div class="mb-6 flex justify-between px-5">
+                    <p class="text-lg font-semibold text-gray-100">Email:</p>
+                    <p class="text-gray-300 text-lg">
+                      <%= user.email %>
+                    </p>
+                  </div>
+                  <!-- Call-to-Action -->
+                  <div class="mt-8">
+                    <a href="/users"
+                       class="block text-center bg-blue-600 text-white py-3 px-6 rounded-lg shadow-md hover:bg-blue-700 transition duration-300">
+                      Go Back
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </section>
+          </div>
+        </div>
+      </section>
+    <% }) %>
+  <% } else { %>
+    <p>No Users</p>
+  <% } %>
+</body>
+</html>
