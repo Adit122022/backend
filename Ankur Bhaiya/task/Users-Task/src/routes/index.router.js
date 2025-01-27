@@ -7,4 +7,4 @@ router.post('/create',submitController)
 router.get('/users',showUserController)
 router.get('/user/:id',OneUserController)
 
-module.exports =router
+module.exports =router;
