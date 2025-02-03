@@ -1,6 +1,6 @@
 const {Router} = require('express');
-const { registerController } = require('../controllers/user.Controller');
 const route = Router();
+const { registerController } = require('../controllers/user.Controller');
 
 route.get('/' , registerController )
 
