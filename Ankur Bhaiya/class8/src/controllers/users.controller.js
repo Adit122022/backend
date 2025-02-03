@@ -30,9 +30,9 @@ catch (err) { res.status(400).json({message:err.message});}
  module.exports.ProfileUserController = async (req,res)=>{
     try{
       const decode = jwt.verify(req.headers.authorization?.split(' ')[1],process.env.JWT_SECRET);
-  const user = await UserModel.findById(decode.id);
-    res.status(200).json(user);     
-
-    }catch(err) {  res.status(400).json({message:err.message}); }
+      if(!decode) return res.status(401).json({message:'Token not provided'});
+      const user = await UserModel.findById(decode.id);
+      res.status(200).json(user);     
+ }catch(err) {  res.status(400).json({message:err.message}); }
 
  }
