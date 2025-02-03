@@ -10,13 +10,13 @@ module.exports.postRegisterController = async (req, res) => {
   try {
     const { username, email, password } = req.body;
     /*  
- Check if username or email is empty
+//  Check if username or email is empty
         if (!username ||!email ||!password) {
             return res.status(400).send("All fields must be filled out.");
         }
 */
     /* 
-Check if user already exists
+// Check if user already exists
         const existingUser = await User.findOne({ email });
         if (existingUser) {
             return res.status(400).send("User already exists! Try logging in.");
@@ -44,13 +44,14 @@ Check if user already exists
 
 module.exports.getLoginController = (req, res) => {
   res.render("login");
+
 };
 
 module.exports.postLoginController = async (req, res) => {
     try{
-        const {email, password} = req.body;
+        const {username, password} = req.body;
 // finding the user
-        const user = await User.findOne({email});
+        const user = await User.findOne({username});
 //if the user not found
         if(!user){ return res.status(400).send("User not found!");}
 // checking the hashed password
@@ -62,7 +63,7 @@ module.exports.postLoginController = async (req, res) => {
 // storing  data in a cookie
         res.cookie("token", token);
 // if everything is good redirect to feed page
-        res.redirect("/");
+        res.redirect("/feed");
 
     }catch(e){
         res.status(400).send(e.message);
