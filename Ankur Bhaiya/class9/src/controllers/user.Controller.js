@@ -34,8 +34,10 @@ module.exports.postRegisterController = async (req, res) => {
     // Tokn creation
     const token = JWT.sign({ id: user.id }, process.env.KEY_TOKEN);
     // Store  data in a cookie  note : dont use the json.stringfy
-    res.cookie("token", token);
-    res.redirect("/users/login");
+    res.cookie("token", token, { httpOnly: true, secure: process.env.NODE_ENV === "production" });
+
+    // Redirect after successful registration
+    res.redirect("/feed");
   } catch (e) {
     res.status(400).send(e.message);
     res.redirect("/users/register");

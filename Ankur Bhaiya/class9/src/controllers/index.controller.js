@@ -9,7 +9,7 @@ module.exports.feedController = (req, res) => {
     const token = req.cookies["token"];
     // checking if the token exists
     if (!token) {
-      return res.redirect("/users/register");
+      return res.redirect("/users/register ");
     }
     // verifying the token
     const decode = jwt.verify(token, process.env.KEY_TOKEN);
