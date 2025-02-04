@@ -35,7 +35,7 @@ module.exports.postRegisterController = async (req, res) => {
     const token = JWT.sign({ id: user.id }, process.env.KEY_TOKEN);
     // Store  data in a cookie  note : dont use the json.stringfy
     res.cookie("token", token);
-    res.redirect("/");
+    res.redirect("/users/login");
   } catch (e) {
     res.status(400).send(e.message);
     res.redirect("/users/register");
