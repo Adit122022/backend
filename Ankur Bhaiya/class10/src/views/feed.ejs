@@ -28,24 +28,24 @@
         </form>
     </div>
 
-    <!-- Feed Section -->
-    <div class="max-w-md mx-auto mt-6 space-y-6">
-        <% posts.forEach(post => { %>
-        <div class="bg-white p-4 rounded-lg shadow-md">
-            <div class="flex items-center space-x-3">
-                <img src="https://via.placeholder.com/40" class="w-10 h-10 rounded-full" alt="User">
-                <h3 class="font-semibold">Anonymous</h3>
-            </div>
-            <img src="<%= post.image %>" class="mt-3 rounded-lg" alt="Post Image">
-            <p class="mt-2 font-semibold"><%= post.title %></p>
-            <p class="text-gray-700"><%= post.content %></p>
-            <div class="flex justify-between mt-3">
-                <button class="text-gray-600">❤️ Like</button>
-                <button class="text-gray-600">💬 Comment</button>
-            </div>
+   <!-- Feed Section -->
+<div class="max-w-6xl mx-auto mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+    <% posts.forEach(post => { %>
+    <div class="bg-white p-4 rounded-lg shadow-md">
+        <div class="flex items-center space-x-3">
+            <img src="<%= post.image %>" class="w-10 h-10 rounded-full" alt="User">
+            <h3 class="font-semibold"><%= post.title %></h3>
         </div>
-        <% }); %>
+        <img src="<%= post.image %>" class="mt-3 rounded-lg w-full object-cover" alt="Post Image">
+        <p class="text-gray-700 mt-2"><%= post.content %></p>
+        <div class="flex justify-between mt-3">
+            <button class="text-gray-600 hover:text-red-500">❤️ Like</button>
+            <button class="text-gray-600 hover:text-blue-500">💬 Comment</button>
+        </div>
     </div>
+    <% }); %>
+</div>
+
 
     <script>
         function togglePostForm() {
