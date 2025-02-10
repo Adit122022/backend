@@ -1,6 +1,6 @@
 const express = require('express');
 const app = express();
-const indexRouters = require('./routes/index.routes');
+const UserRoutes = require('./routes/users.routes');
 
 
 
@@ -11,6 +11,6 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 
-app.use('/', indexRouters);
+app.use('/users', UserRoutes);
 
 module.exports = app;
