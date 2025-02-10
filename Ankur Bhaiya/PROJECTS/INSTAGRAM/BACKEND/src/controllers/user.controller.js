@@ -51,5 +51,11 @@ module.exports.loginUserController = async(req,res) =>{
 }
 
 module.exports.getUserProfileController = async(req,res) => {
-    
+   try{
+    res.status(200).json(req.user);
+    } catch(err){
+        console.error(err);
+        return res.status(500).json({message : 'INTERNAL SERVER ERROR �����'});
+ 
+   } 
 }
