@@ -17,9 +17,9 @@ module.exports.registerUserController = async(req,res) =>{
  
     if(isUserExist) return res.status(400).json({message : 'Username or Email already exist'});
 
-    const hashedPassword = await bcrypt.hash(password, 10);
+    const hashedPassword = await userModels.hashedPassword(password, 10);
     const user = await userModels.create({ username, email, password:hashedPassword });
-    const token = jwt.sign({ id: user._id,username:user.username,email:user.email }, config.SECRET_KEY);
+    const token = user.generateToken('token');
  
     res.status(201).json({ user: user, token: token });
     
