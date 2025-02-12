@@ -1,6 +1,7 @@
 const express = require('express');
 const app = express();
 const UserRoutes = require('./routes/users.routes');
+const PostRoute = require('./routes/posts.routes');
 
 
 
@@ -12,5 +13,6 @@ app.use(express.urlencoded({ extended: true }));
 
 
 app.use('/users', UserRoutes);
+app.use('/posts',PostRoute);
 
 module.exports = app;
