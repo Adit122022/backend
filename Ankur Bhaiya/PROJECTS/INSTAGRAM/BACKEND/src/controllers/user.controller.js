@@ -57,8 +57,8 @@ module.exports.loginUserController = async (req, res) => {
 };
 
 module.exports.getUserProfileController = async (req, res) => {
-  try {
-    res.status(200).json(req.user);
+  try { const user = await userModels.findById(req.user._id).populate('posts');
+    res.status(200).json(user);
   } catch (err) {
     console.error(err);
     return res.status(500).json({ message: 'INTERNAL SERVER ERROR 🐼🐼' });
