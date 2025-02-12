@@ -45,7 +45,9 @@ module.exports.loginUserController = async (req, res) => {
       return res.status(400).json({ message: 'Invalid username or password provided' });
     }
 
-    const token = isUserExist.generateToken();
+    const token = isUserExist.generateToken()
+  
+    
 
     res.status(200).json({token , user:isUserExist });
   } catch (err) {
