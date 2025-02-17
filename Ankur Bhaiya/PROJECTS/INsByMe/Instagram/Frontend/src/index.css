@@ -1,0 +1,5 @@
+@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Lobster&family=Parkinsans:wght@300..800&family=Satisfy&display=swap');
+.font-lobster { font-family: 'Lobster', cursive; }
+.font-parkinsans { font-family: 'Parkinsans', sans-serif; }
+.font-satisfy { font-family: 'Satisfy'; }
