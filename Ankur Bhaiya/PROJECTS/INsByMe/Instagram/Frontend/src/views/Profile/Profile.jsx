@@ -1,16 +1,20 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import SideBar from '../../Components/SideBar';
 
 const Profile = () => {
  const [user, setuser] = useState(null);
  const [error, setError] = useState('');
  const [isLoading, setIsLoading] = useState(true);
  
+ const navigate = useNavigate();
  const fetchUserData = async () => {
  await axios.get('http://localhost:3000/users/profile' ,{headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },})
  .then(res => {setuser(res.data); setIsLoading(false); })
- .catch(err => { setError(err.response.data.message); setIsLoading(false); });
+ .catch(err => {
+  navigate('/login'); 
+   setError(err.response.data.message); setIsLoading(false); });
  }
  useEffect(()=>{
   fetchUserData();
@@ -23,43 +27,7 @@ const Profile = () => {
   return (
     <div className="flex min-h-screen">
       {/* Sidebar */}
-      <div className="w-20 md:w-60 bg-gray-100 border-r border-gray-300 p-4">
-        <h1 className="text-2xl font-bold mb-6">Instagram</h1>
-        <nav className="flex flex-col space-y-6">
-          <Link to="/home" className="flex items-center space-x-3 text-lg hover:text-gray-700">
-            <span>🏠</span>
-            <span className="hidden md:block">Home</span>
-          </Link>
-          <Link to="/search" className="flex items-center space-x-3 text-lg hover:text-gray-700">
-            <span>🔍</span>
-            <span className="hidden md:block">Search</span>
-          </Link>
-          <Link to="/explore" className="flex items-center space-x-3 text-lg hover:text-gray-700">
-            <span>🧭</span>
-            <span className="hidden md:block">Explore</span>
-          </Link>
-          <Link to="/reels" className="flex items-center space-x-3 text-lg hover:text-gray-700">
-            <span>🎥</span>
-            <span className="hidden md:block">Reels</span>
-          </Link>
-          <Link to="/messages" className="flex items-center space-x-3 text-lg hover:text-gray-700">
-            <span>✉</span>
-            <span className="hidden md:block">Messages</span>
-          </Link>
-          <Link to="/notifications" className="flex items-center space-x-3 text-lg hover:text-gray-700">
-            <span>❤</span>
-            <span className="hidden md:block">Notifications</span>
-          </Link>
-          <Link to="/create" className="flex items-center space-x-3 text-lg hover:text-gray-700">
-            <span>➕</span>
-            <span className="hidden md:block">Create</span>
-          </Link>
-          <Link to="/profile" className="flex items-center space-x-3 text-lg hover:text-gray-700">
-            <span>👤</span>
-            <span className="hidden md:block">Profile</span>
-          </Link>
-        </nav>
-      </div>
+   <SideBar/>
 
       {/* Profile Content */}
       <div className="flex-1 p-6">
