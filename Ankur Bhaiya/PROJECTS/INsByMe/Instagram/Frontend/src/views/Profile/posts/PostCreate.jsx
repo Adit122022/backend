@@ -1,12 +1,33 @@
+import axios from 'axios';
 import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom';
 
 const PostCreate = () => {
-    const [mediaUrl, setMediaUrl] = useState('');
+    const [media, setMediaUrl] = useState('');
     const [caption, setCaption] = useState('');
+    const [error, setError] = useState('');
+
+    const navigate = useNavigate();
   
     const handleSubmit = (e) => {
       e.preventDefault();
-      console.log({ mediaUrl, caption });
+let token = localStorage.getItem('token');
+axios.post(
+    'http://localhost:3000/posts/create',
+    { media, caption }, // Correct placement for request body
+    {
+      headers: {
+        Authorization: `Bearer ${token}`,
+        'Content-Type': 'application/json'
+      }
+    }
+  )
+  .then(() => navigate('/profile'))
+  .catch(err => {
+    const message = err.response?.data?.message || 'Failed to create post';
+    setError(message);
+  });
+  
     };
   
     return (
@@ -17,7 +38,7 @@ const PostCreate = () => {
           <input 
             type="url" 
             placeholder="Media URL" 
-            value={mediaUrl} 
+            value={media} 
             onChange={(e) => setMediaUrl(e.target.value)}
             className="w-full p-3 border rounded-xl text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-400"
             required
