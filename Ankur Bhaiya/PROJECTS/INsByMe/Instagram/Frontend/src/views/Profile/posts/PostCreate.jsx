@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
+import SideBar from '../../../Components/SideBar';
 
 const PostCreate = () => {
     const [media, setMediaUrl] = useState('');
@@ -31,7 +32,12 @@ axios.post(
     };
   
     return (
-      <div className="h-screen flex items-center justify-center bg-gray-50">
+  <>
+      
+      {/* Sidebar */}
+      <div className="flex min-h-screen w-full">
+      <SideBar/>
+      <div className="h-screen flex items-center w-full  justify-center bg-gray-50">
         <form onSubmit={handleSubmit} className="bg-white p-6 rounded-2xl shadow-xl w-96 space-y-4">
           <h2 className="text-2xl font-bold text-gray-800">Upload Media</h2>
           
@@ -61,6 +67,7 @@ axios.post(
           </button>
         </form>
       </div>
+      </div></>
     );
   };
 

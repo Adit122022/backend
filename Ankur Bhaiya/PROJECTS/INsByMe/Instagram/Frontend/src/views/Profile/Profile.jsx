@@ -73,19 +73,12 @@ const Profile = () => {
           <button className="text-sm font-semibold">🏷 TAGGED</button>
         </div>
 
+
+      {/* POSTS */}
         <div className="grid grid-cols-4 gap-2">
-  {user.posts && user.posts.map((post,index) => (
-  
-    <div key={index} className=" bg-gray-300">
-       <Link to={`/post-details/${index}`}>
-      <img 
-        src={post.media} 
-        alt={`Post`} 
-        className="w-full h-full object-cover" 
-      />
-    </Link>
-    </div>
-  ))}
+       {user.posts && user.posts.map((post,index) => ( <div key={index} className=" bg-gray-300">
+       <Link to={`/post-details/${index}`}> <img  src={post.media}  alt={`Post`}  className="w-full h-full object-cover" /> </Link>
+       </div>  ))}
 </div>
       </div>
     </div>
