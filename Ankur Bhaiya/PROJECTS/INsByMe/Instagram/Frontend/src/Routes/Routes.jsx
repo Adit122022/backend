@@ -12,14 +12,13 @@ import PostCreate from '../views/Profile/posts/PostCreate'
 const AppRoutes = () => {
   return <BrowserRouter>
   <Routes>
-    <Route path="/" element={ <Home/>} />
-    <Route path="/register" element={<Register />} />
-    <Route path="/login" element={<Login />} />
-    <Route   path="/profile"  element={<ProtectedRoute> <Profile /> </ProtectedRoute> }  />
-    <Route path="/create"  element={ <ProtectedRoute>   <PostCreate /> </ProtectedRoute> } />
+    <Route path="/"            element={ <Home/>} />
+    <Route path="/register"    element={<Register />} />
+    <Route path="/login"       element={<Login />} />
+    <Route path="/profile"     element={<ProtectedRoute> <Profile /> </ProtectedRoute> }  />
+    <Route path="/create"      element={ <ProtectedRoute>   <PostCreate /> </ProtectedRoute> } />
     <Route path="/post-details/:postId"  element={ <ProtectedRoute>   <PostDetails /> </ProtectedRoute> } />
-
-    <Route path="*" element={<NotFound />} /> 
+    <Route path="*"            element={<NotFound />} /> 
   </Routes>
   
   </BrowserRouter>
