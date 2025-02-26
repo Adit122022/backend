@@ -8,6 +8,8 @@ router.post('/register', userMiddleware.registerValidation, userController.regis
 
 router.post('/login', userMiddleware.loginValidation, userController.login)
 
+router.get('/homr', userMiddleware.authUser, userController.home)
+
 
 
 module.exports = router 
