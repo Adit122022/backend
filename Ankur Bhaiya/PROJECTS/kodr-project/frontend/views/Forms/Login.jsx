@@ -16,11 +16,11 @@ const Login = () => {
     setSuccess(""); 
 
     try {
-      await axios.post("http://localhost:3000/v1/api/users/login", {
+    const res =  await axios.post("http://localhost:3000/v1/api/users/login", {
         email,
         password,
       });
-
+      localStorage.setItem("token", res.data.token);
       setSuccess("Registration successful! Please log in.");
       setEmail("");
       setPassword("");

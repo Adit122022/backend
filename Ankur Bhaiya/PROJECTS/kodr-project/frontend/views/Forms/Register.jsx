@@ -17,12 +17,12 @@ const Register = () => {
     setSuccess("");
 
     try {
-      await axios.post("http://localhost:3000/v1/api/users/register", {
+    const res =  await axios.post("http://localhost:3000/v1/api/users/register", {
         username,
         email,
         password,
       });
-
+localStorage.setItem("token", res.data.token);
       setSuccess("Registration successful! Please log in.");
       setUsername("");
       setEmail("");
@@ -31,10 +31,6 @@ const Register = () => {
     } catch (err) {
       if (err.response && Array.isArray(err.response.data.errors)) {
         setError(err.response.data.errors.map((error) => error.msg));
-      } else if (err.response) {
-        setError(["Something went wrong. Please try again."]);
-      } else if (err.request) {
-        setError(["No response from server. Please try again later."]);
       } else {
         setError(["An error occurred. Please try again."]);
       }
@@ -52,15 +48,9 @@ const Register = () => {
 
         <h1 className="text-3xl font-bold text-center text-gray-800 mt-8 mb-6">Sign Up</h1>
 
-        {error.length > 0 && (
-          <div className="text-red-500 text-sm text-center mb-4">
-            {error.map((errMsg, index) => (
-              <p key={index}>{errMsg}</p>
-            ))}
-          </div>
-        )}
+        {error.length > 0 && ( <div className="text-red-500 text-sm text-center mb-4">  {error.map((errMsg, index) => (<p className="font-bold" key={index}>{errMsg}</p> ))}  </div> )}
 
-        {success && <p className="text-green-500 text-sm text-center mb-4">{success}</p>}
+        {success && <p className="text-green-500 text-sm font-bold text-center mb-4">{success}</p>}
 
         <form onSubmit={handleSubmit} className="space-y-4">
           {/* Username Input */}
