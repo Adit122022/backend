@@ -1,14 +1,30 @@
 import React from 'react'
 import axios from 'axios'
+import {  useNavigate } from "react-router-dom";
 
 const CreatePost = () => {
- const handleSubmit = (e) => {
-    e.preventDefault()
-    const formData = new FormData(e.target)
-       axios.post('http://localhost:3000/v1/api/post/create', formData,{
-        headers: {   Authorization: `Bearer ${localStorage.getItem('token')}` }
-       })
- }
+ const navigate = useNavigate()
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const formData = new FormData(e.target);
+
+    try {
+      const response = await axios.post(
+        "http://localhost:3000/v1/api/post/create",
+        formData,
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+            "Content-Type": "multipart/form-data", // ✅ Important for file upload
+          },
+        }
+      );
+ navigate('/');  
+      console.log("Post created:", response.data);
+    } catch (error) {
+      console.error("Error creating post:", error.response?.data || error);
+    }
+  };
 
 
   return (
