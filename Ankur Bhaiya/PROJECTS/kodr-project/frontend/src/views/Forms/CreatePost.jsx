@@ -1,6 +1,7 @@
 import React from 'react'
 import axios from 'axios'
 import {  useNavigate } from "react-router-dom";
+import NavBar from '../../components/others/NavBar';
 
 const CreatePost = () => {
  const navigate = useNavigate()
@@ -28,7 +29,9 @@ const CreatePost = () => {
 
 
   return (
-    <main className="flex items-center justify-center min-h-screen bg-gray-900">
+    <div className='flex min-h-screen'>
+      <NavBar/>
+    <main className="flex items-center justify-center w-full min-h-screen bg-gray-900">
       <section className="w-full max-w-lg bg-gray-800 p-8 shadow-2xl rounded-2xl">
         <h1 className="text-2xl font-bold text-white text-center mb-6">
           Create Post
@@ -65,6 +68,7 @@ const CreatePost = () => {
         </form>
       </section>
     </main>
+ </div>
   )
 }
 
