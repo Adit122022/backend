@@ -25,6 +25,8 @@ const userSchema = new mongoose.Schema({
         type: String,
         select: false,
     },
+    profileImage: {  type: String,  default: "https://i.pinimg.com/736x/6c/b9/7e/6cb97e4952349388bd90236f8881bda4.jpg" },
+     posts: { type: mongoose.Schema.Types.ObjectId, ref: 'Post', required: true, },
 })
 
 userSchema.statics.hashPassword = async (password) => {

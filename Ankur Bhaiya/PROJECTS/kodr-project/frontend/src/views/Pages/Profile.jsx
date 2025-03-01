@@ -1,24 +1,41 @@
-import React from 'react';
-import NavBar from '../../components/others/NavBar';
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
+import NavBar from "../../components/others/NavBar";
 
 const Profile = () => {
+ const [user, setuser] = useState(null);
+ const [error, setError] = useState('');
+ const [isLoading, setIsLoading] = useState(true);
+ 
+ const fetchUserData = async () => {
+ await axios.get('http://localhost:3000/v1/api/users/profile' ,{headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },})
+ .then(res => {setuser(res.data); setIsLoading(false); })
+ .catch(err => { setError(err.response.data.message); setIsLoading(false); });
+ }
+ useEffect(()=>{
+  fetchUserData();
+ },[])
+ console.log(user)
 
+ if (error) return <p className="text-red-500">{error}</p>;
+ if (!user) return <p className="text-center text-white">Loading...</p>;
   return (
    <main className='flex min-h-screen'>
-   <NavBar/>
+  <NavBar/>
    
   {/* Profile Content */}
       <div className="flex-1 p-6 bg-gray-800 text-white">
         {/* Profile Info */}
         <div className="flex items-center space-x-6 mb-6">
           <img
-            src="https://via.placeholder.com/150"
+            src={user.profileImage}
             alt="Profile"
             className="w-36 h-36 rounded-full border border-gray-400"
           />
           <div>
             <div className="flex items-center space-x-4 mb-2">
-              <h2 className="text-xl font-semibold">manish_adtani</h2>
+              <h2 className="text-xl font-semibold">{user.username}</h2>
               <button className="bg-gray-200 px-4 py-2 rounded-md text-sm">Edit profile</button>
               <button className="bg-gray-200 px-4 py-2 rounded-md text-sm">View archive</button>
               <button className="text-xl">⚙</button>
@@ -51,12 +68,20 @@ const Profile = () => {
           <button className="text-sm font-semibold">🏷 TAGGED</button>
         </div>
 
-        {/* Posts Grid */}
-        <div className="grid grid-cols-3 gap-2">
-          {[...Array(6)].map((_, i) => (
-            <div key={i} className="h-48 bg-gray-300"></div>
-          ))}
-        </div>
+        <div className="grid grid-cols-4 gap-2">
+  {user.posts && user.posts.map((post,index) => (
+  
+    <div key={index} className=" bg-gray-300">
+       <Link to={`/post-details/${index}`}>
+      <img 
+        src={post.media} 
+        alt={`Post`} 
+        className="w-full h-full object-cover" 
+      />
+    </Link>
+    </div>
+  ))}
+</div>
       </div>
     </main>
   );

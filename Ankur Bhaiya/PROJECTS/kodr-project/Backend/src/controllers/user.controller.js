@@ -48,6 +48,11 @@ module.exports.login = async (req, res) => {
   }
 };
 
+module.exports.ProfileController =async (req,res)=>{
+  const user = await userModel.findById(req.user._id).populate("posts")
+ res.send(user);
+ }
+
 module.exports.home = async (req, res) => {
   res.status(200).json({ message: "Welcome home!" });
 };
