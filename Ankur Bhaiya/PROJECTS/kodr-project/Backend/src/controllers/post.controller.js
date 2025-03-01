@@ -1,7 +1,8 @@
-const PostModel = require("../models/post.model")
+const PostModel = require("../models/post.model");
+const userModel = require("../models/user.model");
 
 
- module.exports.createPost = (req,res) =>{
+ module.exports.createPost = async(req,res) =>{
   try{
     const { caption,image } = req.body;
   console.log(caption,image)
@@ -13,6 +14,9 @@ const PostModel = require("../models/post.model")
     author:req.user._id
   }) 
   post.save()
+  await userModel.findByIdAndUpdate(req.user._id,{
+    $push: { posts: post._id }  // add post id to user's posts array
+  })
   res.status(201).json(post)
   }catch(err){
     console.log(err)

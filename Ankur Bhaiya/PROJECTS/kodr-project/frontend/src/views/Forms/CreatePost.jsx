@@ -20,7 +20,7 @@ const CreatePost = () => {
           },
         }
       );
- navigate('/');  
+ navigate('/profile');  
       console.log("Post created:", response.data);
     } catch (error) {
       console.error("Error creating post:", error.response?.data || error);

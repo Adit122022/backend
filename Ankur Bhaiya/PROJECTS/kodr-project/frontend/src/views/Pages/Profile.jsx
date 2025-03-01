@@ -16,8 +16,8 @@ const Profile = () => {
  useEffect(()=>{
   fetchUserData();
  },[])
- console.log(user)
 
+ if (isLoading) return <p className="text-center text-white">Loading...</p>;
  if (error) return <p className="text-red-500">{error}</p>;
  if (!user) return <p className="text-center text-white">Loading...</p>;
   return (
@@ -27,18 +27,20 @@ const Profile = () => {
   {/* Profile Content */}
       <div className="flex-1 p-6 bg-gray-800 text-white">
         {/* Profile Info */}
-        <div className="flex items-center space-x-6 mb-6">
+        <div className="flex items-center space-x-6 mb-6 p-2 ">
           <img
             src={user.profileImage}
             alt="Profile"
-            className="w-36 h-36 rounded-full border border-gray-400"
+            className="w-36 h-36 rounded-full border-2 border-gray-400"
           />
           <div>
-            <div className="flex items-center space-x-4 mb-2">
+            <div className="flex items-center justify-between w-[40vw] mb-2">
               <h2 className="text-xl font-semibold">{user.username}</h2>
-              <button className="bg-gray-200 px-4 py-2 rounded-md text-sm">Edit profile</button>
-              <button className="bg-gray-200 px-4 py-2 rounded-md text-sm">View archive</button>
+              <div className='buttons flex  items-center space-x-4 mb-2'>
+              <button className="bg-gray-600 px-4 py-2 rounded-md text-sm">Edit profile</button>
+              <button className="bg-gray-600 px-4 py-2 rounded-md text-sm">View archive</button>
               <button className="text-xl">⚙</button>
+              </div>
             </div>
             <div className="flex space-x-6 mb-3">
               <div><span className="font-semibold">5</span> posts</div>
@@ -46,16 +48,22 @@ const Profile = () => {
               <div><span className="font-semibold">556</span> following</div>
             </div>
             <div>
-              <p className="text-lg">Manish Adtani</p>
+              <p className="text-lg">{user.username}</p>
             </div>
           </div>
         </div>
 
         {/* Highlights */}
-        <div className="flex space-x-4 mb-6">
+        <div className="flex space-x-4 mb-6 px-10">
           {['kodr💀', '🤝', '✈', '🐂'].map((item, index) => (
             <div key={index} className="flex flex-col items-center">
-              <div className="w-16 h-16 border-2 border-gray-400 rounded-full"></div>
+              <div className="w-16 h-16 border-2 border-gray-400 rounded-full">
+                <img
+                  src={user.profileImage}
+                  alt="Highlight"
+                  className="w-full h-full object-cover rounded-full"
+                />
+              </div>
               <span className="text-xs mt-1">{item}</span>
             </div>
           ))}
