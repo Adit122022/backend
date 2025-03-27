@@ -48,7 +48,7 @@ const PostDetails = () => {
                 <img
                   src={user.posts[postId].media}
                   alt="Instagram Post"
-                  className="w-full h-96 object-cover"
+                  className="aspect-square object-contain"
                 />
       
                 {/* Actions */}
