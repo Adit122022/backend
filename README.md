@@ -7,7 +7,7 @@
 Write the following commands on your terminal to clone this repository, so that you can run this project locally.
 
 ```bash
-git clone https://github.com/Adit122022/backend.git
+git clone https://github.com/Adit122022/BACKEND.git
 ```
 
 ## 📂 **Table of Contents**
@@ -26,8 +26,8 @@ git clone https://github.com/Adit122022/backend.git
 To clone this repository for your local use, use the following commands:
 
 ```bash
-git clone https://github.com/Adit122022/backend.git
-cd backend
+git clone https://github.com/Adit122022/BACKEND.git
+cd BACKEND
 ```
 
 ---
