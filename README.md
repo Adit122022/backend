@@ -101,6 +101,22 @@ cd backend
 
 ---
 
+<details>
+<summary style="display: inline; font-size: 20px; font-weight: 700; cursor: pointer;" title="Click on me to Expand">Click to Expand Phase 05: WebSockets</summary>
+
+## 📚 [ Phase 05: WebSockets ](./05_WEBSOCKETS/)
+
+> **`Topics Covered:` Real-time Communication -** Introduction to WebSockets, setting up WebSocket connections, and building real-time applications.
+
+### 💻 [**Implementation Modules**](./05_WEBSOCKETS/)
+
+- **`Basics`**: Fundamentals of WebSocket communication.
+- **`class_01` & `class_02`**: Progressing through WebSocket implementations and real-time features.
+
+</details>
+
+---
+
 # Projects
 
 <details>
